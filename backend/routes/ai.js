@@ -1,10 +1,11 @@
 import express from 'express';
 import db from '../database.js';
+import { writeLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
 // AI-based red flag detection for job posts
-router.post('/analyze-job-post', async (req, res) => {
+router.post('/analyze-job-post', writeLimiter, async (req, res) => {
   const { jobPostText } = req.body;
   
   if (!jobPostText) {

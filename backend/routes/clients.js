@@ -1,5 +1,6 @@
 import express from 'express';
 import db from '../database.js';
+import { writeLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
@@ -66,7 +67,7 @@ router.get('/search/:query', (req, res) => {
 });
 
 // Create a new client
-router.post('/', (req, res) => {
+router.post('/', writeLimiter, (req, res) => {
   const { name, company, industry } = req.body;
   
   if (!name) {

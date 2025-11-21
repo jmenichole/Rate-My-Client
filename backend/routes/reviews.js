@@ -1,5 +1,6 @@
 import express from 'express';
 import db from '../database.js';
+import { writeLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();
 
@@ -67,7 +68,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create a new review
-router.post('/', (req, res) => {
+router.post('/', writeLimiter, (req, res) => {
   const {
     client_id,
     rating,
@@ -121,7 +122,7 @@ router.post('/', (req, res) => {
 });
 
 // Update a review
-router.put('/:id', (req, res) => {
+router.put('/:id', writeLimiter, (req, res) => {
   const { id } = req.params;
   const {
     rating,
@@ -162,7 +163,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Delete a review
-router.delete('/:id', (req, res) => {
+router.delete('/:id', writeLimiter, (req, res) => {
   const { id } = req.params;
   
   db.run('DELETE FROM reviews WHERE id = ?', [id], function(err) {
