@@ -2,6 +2,10 @@
 
 A fullstack web application that lets freelancers share horror stories and flag red-flag clients anonymously. Features AI-powered analysis to auto-score job posts for red flags like "must be available 24/7" or "exposure."
 
+**🌐 Live Demo**: [https://jmenichole.github.io/Rate-My-Client/](https://jmenichole.github.io/Rate-My-Client/)
+
+> Note: The live demo is frontend-only. Backend features require separate deployment (see [DEPLOYMENT.md](DEPLOYMENT.md)).
+
 ## 🎯 Features
 
 - **Anonymous Client Reviews**: Share experiences with clients without revealing your identity

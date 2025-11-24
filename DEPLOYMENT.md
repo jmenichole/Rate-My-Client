@@ -69,7 +69,32 @@ pm2 startup
 
 ### Frontend Deployment
 
-#### Option 1: Static Hosting (Netlify, Vercel, GitHub Pages)
+#### Option 1: GitHub Pages (Recommended for Frontend-Only Demo)
+
+GitHub Pages is automatically configured for this repository. The frontend is deployed to GitHub Pages on every push to the `main` branch.
+
+**Live URL**: https://jmenichole.github.io/Rate-My-Client/
+
+**Automatic Deployment:**
+- Pushes to the `main` branch trigger automatic deployment via GitHub Actions
+- The workflow builds the frontend and deploys to GitHub Pages
+- No manual steps required once set up
+
+**Manual Deployment:**
+1. Ensure GitHub Pages is enabled in repository settings:
+   - Go to Settings > Pages
+   - Source: GitHub Actions
+
+2. Push changes to the `main` branch:
+```bash
+git push origin main
+```
+
+3. Monitor deployment progress in the Actions tab
+
+**Note**: GitHub Pages deployment is frontend-only. For full functionality including backend API features, you'll need to deploy the backend separately (see Backend Deployment section).
+
+#### Option 2: Static Hosting (Netlify, Vercel)
 
 1. Build the frontend:
 ```bash
@@ -83,7 +108,7 @@ npm run build
 3. Configure environment variable:
    - Set `VITE_API_URL` to your backend API URL
 
-#### Option 2: Self-hosted with Nginx
+#### Option 3: Self-hosted with Nginx
 
 1. Build the frontend:
 ```bash
